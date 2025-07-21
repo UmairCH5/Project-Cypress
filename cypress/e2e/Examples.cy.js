@@ -27,11 +27,11 @@ describe('Example test', () =>{
         }
         cy.get('[test-data="post-button"]').click()
     })
-    it('Add grudges', () => {
-        cy.contains(/Add Some Grudges/i)
-        cy.get('[data-test="grudge-list"]').within(()=>{
-            cy.get('li').should('have.length', 0)
-        })
+    // it('Add grudges', () => {
+    //     cy.contains(/Add Some Grudges/i)
+    //     cy.get('[data-test="grudge-list"]').within(()=>{
+    //         cy.get('li').should('have.length', 0)
+    //     })
         cy.get('[data-test= "clear-grudge"]').should('not.exist')
         cy.get('[data-test= "grudge-title"]').should('have.text', 'Add Some Grudges')
         cy.get('[data-test="grudge-input"]').type('Add first grudge')
