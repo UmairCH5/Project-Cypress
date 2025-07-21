@@ -21,7 +21,7 @@ export default function GrudgeList(){
     const [inputValue, setInputValue] = useState('')
 
     console.log({grudges})
-
+    
     const title = grudges.length > 0 ? 'Grudges' : 'Add Some Grudges'
 
     function deleteGrudge(grudge){
@@ -40,20 +40,22 @@ export default function GrudgeList(){
 
     return (
         <div style={{margin: '20px'}}>
-            <h3 style={{margin: '20px 0px'}}>{title}</h3>
+            <h3 data-test= "grudge-title" style={{margin: '20px 0px'}}>{title}</h3>
             <div>
+
             <TextField 
             label="Add Grudge" 
             variant="filled" 
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
             style={{backgroundColor: 'white'}}
+            data-test= "grudge-input"
             />
             </div>
-            <Button onClick={addGrudge}>
+            <Button data-test= "add-grudge" onClick={addGrudge}>
                 Add Grudge
             </Button>
-            <ul style={{color: 'white', listStyleType: 'none'}}>
+            <ul data-test= "grudge-list" style={{color: 'white', listStyleType: 'none'}}>
                 {
                     grudges.length > 0 && (
                         grudges.map((g) => {
@@ -71,7 +73,9 @@ export default function GrudgeList(){
                 }
             </ul>
             {
-                grudges.length > 0 && <Button onClick={clearGrudges}>Clear</Button>
+                grudges.length > 0 && <Button 
+                data-test= "clear-grudge"
+                onClick={clearGrudges}>Clear</Button>
             }
         </div>
     )
