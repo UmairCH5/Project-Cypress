@@ -28,10 +28,24 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Install dependencies (only for Cypress)
-      - run: npm ci
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Build the Next.js app
+      - name: Build Next.js app
+        run: npm run build
+
+      # Start the Next.js server in the background
+      - name: Start Next.js server
+        run: npm start &
+
+      # Wait for the server to be ready
+      - name: Wait for server to be ready
+        run: npx wait-on http://localhost:3000
 
       # Run Cypress tests
       - name: Run Cypress tests
         run: npx cypress run
+
 
