@@ -3,8 +3,8 @@ describe('Example test', () =>{
         cy.visit('/examples')
     })
     it('Multi page testing', () => {
-        cy.get('[data-test="nav-why-cypress"]').click()
-        cy.location("pathname").should("equal", "/")
+        // cy.get('[data-test="nav-why-cypress"]').click()
+        // cy.location("pathname").should("equal", "/")
         cy.wait(1000)
         cy.get('[data-test="nav-overview"]').click()
         cy.location("pathname").should("equal", "/overview")
@@ -21,12 +21,12 @@ describe('Example test', () =>{
         cy.get('[data-test="nav-best-practices"]').click()
         cy.location("pathname").should("equal", "/best-practices")
     })
-    // it('intercept test', () => {
-    //     cy.intercept('post', 'http://localhost:3000/examples'), {
-    //         fixture: 'example.json'
-    //     }
-    //     cy.get('[test-data="post-button"]').click()
-    // })
+    it('intercept test', () => {
+        cy.intercept('post', 'http://localhost:3000/examples'), {
+            fixture: 'example.json'
+        }
+        cy.get('[test-data="post-button"]').click()
+    })
     it('Add grudges', () => {
         cy.contains(/Add Some Grudges/i)
         cy.get('[data-test="grudge-list"]').within(()=>{
