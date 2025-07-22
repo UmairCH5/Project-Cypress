@@ -2,10 +2,9 @@ describe('Example test', () =>{
     beforeEach(() => {
         cy.visit('/examples')
     })
-    it.only('Multi page testing', () => {
-        // cy.get('[data-test="nav-why-cypress"]').click()
-        // cy.wait(1000)
-        // cy.location("pathname").should("equal", "/")
+    it('Multi page testing', () => {
+        cy.get('[data-test="nav-why-cypress"]').click()
+        cy.location("pathname").should("equal", "/")
         cy.wait(1000)
         cy.get('[data-test="nav-overview"]').click()
         cy.location("pathname").should("equal", "/overview")
