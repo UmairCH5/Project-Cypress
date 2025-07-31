@@ -3,7 +3,10 @@ name: cypressTest
 on:
   push:
     branches:
-      - main  
+      - main
+
+  schedule:
+    - cron: '0 2 * * *'   # Runs every day at 2 AM UTC
 
 jobs:
   cypress-tests:
@@ -35,4 +38,3 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-
